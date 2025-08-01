@@ -24,7 +24,7 @@ declare module '@inquirer/prompts' {
 
 export async function create(projectName: string, options: CreateOptions): Promise<void> {
   console.log();
-  console.log(`${chalk.bgBlue(' WEGIC CLI ')} 🚀 创建新项目...`);
+  console.log(`${chalk.bgBlue('OBJECTX CLI ')} 🚀 创建新项目...`);
   console.log();
 
   // 验证项目名称

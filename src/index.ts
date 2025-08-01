@@ -9,7 +9,7 @@ const pkg = require('../package.json');
 const cli = new Command();
 
 cli
-  .name('wegic-cli')
+  .name('objectx-cli')
   .description('前端项目脚手架工具，支持组件库、工具包、类型包等项目模板')
   .version(pkg.version);
 

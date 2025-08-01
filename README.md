@@ -1,4 +1,4 @@
-# wegic-cli
+# objectx-cli
 
 前端项目脚手架工具，支持创建组件库、工具包和类型包项目。
 
@@ -16,13 +16,13 @@
 ### 全局安装
 
 ```bash
-npm install -g wegic-cli
+npm install -g objectx-cli
 ```
 
 或者
 
 ```bash
-pnpm add -g wegic-cli
+pnpm add -g objectx-cli
 ```
 
 ## 使用方法
@@ -30,7 +30,7 @@ pnpm add -g wegic-cli
 ### 创建新项目
 
 ```bash
-wegic-cli create my-project
+objectx-cli create my-project
 ```
 
 按照提示选择项目类型和配置：
@@ -72,8 +72,8 @@ wegic-cli create my-project
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/wegic-cli.git
-cd wegic-cli
+git clone https://github.com/yourusername/objectx-cli.git
+cd objectx-cli
 
 # 安装依赖
 pnpm install

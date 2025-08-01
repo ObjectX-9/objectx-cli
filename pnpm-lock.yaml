@@ -17,6 +17,9 @@ importers:
       commander:
         specifier: ^11.1.0
         version: 11.1.0
+      commands:
+        specifier: link:/Users/yaya/wegic/objectx-tool/src/commands
+        version: link:src/commands
       ejs:
         specifier: ^3.1.9
         version: 3.1.10
