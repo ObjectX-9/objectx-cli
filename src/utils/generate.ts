@@ -37,7 +37,7 @@ export async function generateProject(targetDir: string, options: ProjectOptions
   // 使用绝对路径定位到templates目录
   const templateDir = path.resolve(
     __dirname, // src/utils
-    '../../src/templates', // 回到项目根目录再进入src/templates
+    '../../templates', // 回到项目根目录再进入src/templates
     options.projectType
   );
 
