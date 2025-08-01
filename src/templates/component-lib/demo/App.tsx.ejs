@@ -1,0 +1,88 @@
+import React, { useState } from 'react';
+import { Button<% if (hasTailwind) { %>, Card<% } %> } from '../src';
+<% if (hasCssModules) { %>import styles from './App.module.css';<% } else { %>import './App.css';<% } %>
+
+const App: React.FC = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div<% if (hasCssModules) { %> className={styles.container}<% } else { %> className="container"<% } %>>
+      <header<% if (hasCssModules) { %> className={styles.header}<% } else { %> className="header"<% } %>>
+        <h1><%= projectName %> 组件演示</h1>
+        <p>这是一个用于演示组件库的简单应用</p>
+      </header>
+
+      <main<% if (hasCssModules) { %> className={styles.main}<% } else { %> className="main"<% } %>>
+        <h2>Button 组件</h2>
+        
+        <div<% if (hasCssModules) { %> className={styles.demo}<% } else { %> className="demo"<% } %>>
+          <h3>基本用法</h3>
+          <div<% if (hasCssModules) { %> className={styles.buttonGroup}<% } else { %> className="button-group"<% } %>>
+            <Button>默认按钮</Button>
+            <Button type="primary">主要按钮</Button>
+            <Button type="secondary">次要按钮</Button>
+            <Button type="danger">危险按钮</Button>
+          </div>
+          
+          <h3>不同大小</h3>
+          <div<% if (hasCssModules) { %> className={styles.buttonGroup}<% } else { %> className="button-group"<% } %>>
+            <Button size="small">小型按钮</Button>
+            <Button size="medium">中型按钮</Button>
+            <Button size="large">大型按钮</Button>
+          </div>
+          
+          <h3>禁用状态</h3>
+          <div<% if (hasCssModules) { %> className={styles.buttonGroup}<% } else { %> className="button-group"<% } %>>
+            <Button disabled>禁用按钮</Button>
+            <Button type="primary" disabled>禁用主要按钮</Button>
+          </div>
+          
+          <h3>点击事件</h3>
+          <div<% if (hasCssModules) { %> className={styles.counter}<% } else { %> className="counter"<% } %>>
+            <p>点击次数: {count}</p>
+            <Button type="primary" onClick={() => setCount(count + 1)}>增加</Button>
+            <Button type="secondary" onClick={() => setCount(0)} style={{ marginLeft: '8px' }}>重置</Button>
+          </div>
+        </div>
+
+        <% if (hasTailwind) { %>
+        <h2>Card 组件 (Tailwind CSS)</h2>
+        
+        <div<% if (hasCssModules) { %> className={styles.demo}<% } else { %> className="demo"<% } %>>
+          <h3>基本用法</h3>
+          <Card title="基本卡片">
+            这是一个使用Tailwind CSS构建的卡片组件。
+          </Card>
+          
+          <h3 style={{ marginTop: '24px' }}>带页脚的卡片</h3>
+          <Card 
+            title="带页脚的卡片" 
+            footer={
+              <>
+                <Button size="small" type="secondary">取消</Button>
+                <Button size="small" type="primary">确认</Button>
+              </>
+            }
+          >
+            这个卡片包含底部操作按钮。
+          </Card>
+          
+          <h3 style={{ marginTop: '24px' }}>无阴影卡片</h3>
+          <Card 
+            title="无阴影卡片" 
+            shadow={false}
+          >
+            这个卡片没有阴影效果。
+          </Card>
+        </div>
+        <% } %>
+      </main>
+      
+      <footer<% if (hasCssModules) { %> className={styles.footer}<% } else { %> className="footer"<% } %>>
+        <p>&copy; {new Date().getFullYear()} <%= projectName %></p>
+      </footer>
+    </div>
+  );
+};
+
+export default App; 

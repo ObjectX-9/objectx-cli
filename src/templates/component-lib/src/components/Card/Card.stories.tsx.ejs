@@ -1,0 +1,73 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Card } from './Card';
+import { Button } from '../Button';
+
+// 组件的元数据，控制着Storybook如何展示组件
+const meta = {
+  title: 'Components/Card',
+  component: Card,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    shadow: { control: 'boolean' },
+    footer: { control: false },
+  },
+} satisfies Meta<typeof Card>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// 基本卡片
+export const Basic: Story = {
+  args: {
+    title: '基本卡片',
+    children: <p>这是一个使用<% if (hasTailwind) { %>Tailwind CSS<% } else { %>内联样式<% } %>构建的卡片组件</p>,
+  },
+};
+
+// 带页脚的卡片
+export const WithFooter: Story = {
+  args: {
+    title: '带页脚的卡片',
+    children: <p>这个卡片包含底部操作按钮</p>,
+    footer: (
+      <>
+        <Button size="small" type="secondary">取消</Button>
+        <Button size="small" type="primary">确认</Button>
+      </>
+    ),
+  },
+};
+
+// 无阴影卡片
+export const WithoutShadow: Story = {
+  args: {
+    title: '无阴影卡片',
+    children: <p>这个卡片没有阴影效果</p>,
+    shadow: false,
+  },
+};
+
+// 复杂内容
+export const ComplexContent: Story = {
+  args: {
+    title: '复杂内容卡片',
+    children: (
+      <div>
+        <h3 style={{ marginTop: 0, marginBottom: '16px' }}>内容标题</h3>
+        <p>支持任意React节点作为内容</p>
+        <div style={{ marginTop: '16px', padding: '12px', backgroundColor: '#f5f5f5', borderRadius: '4px' }}>
+          <code>可以包含代码示例或其他组件</code>
+        </div>
+      </div>
+    ),
+    footer: (
+      <>
+        <Button size="small" type="secondary">取消</Button>
+        <Button size="small" type="primary">确认</Button>
+      </>
+    ),
+  },
+}; 

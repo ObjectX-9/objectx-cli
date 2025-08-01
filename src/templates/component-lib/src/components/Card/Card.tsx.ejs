@@ -1,0 +1,95 @@
+import React from 'react';
+
+export interface CardProps {
+  /**
+   * 卡片标题
+   */
+  title: string;
+  /**
+   * 卡片内容
+   */
+  children: React.ReactNode;
+  /**
+   * 卡片底部操作区
+   */
+  footer?: React.ReactNode;
+  /**
+   * 是否有阴影
+   */
+  shadow?: boolean;
+  /**
+   * 自定义类名
+   */
+  className?: string;
+}
+
+/**
+ * 使用Tailwind CSS的卡片组件
+ */
+export const Card: React.FC<CardProps> = ({
+  title,
+  children,
+  footer,
+  shadow = true,
+  className = '',
+}) => {
+  <% if (hasTailwind) { %>
+  // Tailwind CSS类名
+  const cardClass = `
+    rounded-lg 
+    border border-gray-200 
+    overflow-hidden 
+    bg-white 
+    ${shadow ? 'shadow-md' : ''}
+    ${className}
+  `.trim();
+
+  const headerClass = 'px-4 py-3 border-b border-gray-200 bg-gray-50 font-medium';
+  const bodyClass = 'p-4';
+  const footerClass = 'px-4 py-3 bg-gray-50 border-t border-gray-200 flex justify-end gap-2';
+  
+  return (
+    <div className={cardClass}>
+      <div className={headerClass}>{title}</div>
+      <div className={bodyClass}>{children}</div>
+      {footer && <div className={footerClass}>{footer}</div>}
+    </div>
+  );
+  <% } else { %>
+  // 非Tailwind项目使用普通样式
+  const style = {
+    card: {
+      border: '1px solid #e5e7eb',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      backgroundColor: 'white',
+      boxShadow: shadow ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : 'none',
+    },
+    header: {
+      padding: '12px 16px',
+      borderBottom: '1px solid #e5e7eb',
+      backgroundColor: '#f9fafb',
+      fontWeight: 500,
+    },
+    body: {
+      padding: '16px',
+    },
+    footer: {
+      padding: '12px 16px',
+      borderTop: '1px solid #e5e7eb',
+      backgroundColor: '#f9fafb',
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '8px',
+    }
+  };
+  
+  return (
+    <div style={{...style.card, ...(className ? {className} : {})}}>
+      <div style={style.header}>{title}</div>
+      <div style={style.body}>{children}</div>
+      {footer && <div style={style.footer}>{footer}</div>}
+    </div>
+  );
+  <% } %>
+}; 

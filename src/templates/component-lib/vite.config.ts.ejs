@@ -1,0 +1,67 @@
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import react from '@vitejs/plugin-react';
+import autoprefixer from 'autoprefixer';
+<% if (hasTailwind) { %>import tailwindcss from 'tailwindcss';<% } %>
+
+// https://vitejs.dev/config/
+export default defineConfig(({ command, mode }) => {
+  const isDemo = mode === 'demo';
+
+  const config = {
+    plugins: [react()],
+    css: {<% if (hasCssModules) { %>
+      modules: {
+        generateScopedName: '[name]__[local]__[hash:base64:5]'
+      },<% } %>
+      postcss: {
+        plugins: [<% if (hasTailwind) { %>
+          tailwindcss(),<% } %>
+          autoprefixer()
+        ]
+      }
+    }
+  };
+
+  // 在demo模式下，使用demo目录作为开发服务器入口
+  if (isDemo) {
+    return {
+      ...config,
+      root: 'demo',
+      publicDir: 'public',
+      server: {
+        port: 5173,
+        open: true
+      }
+    };
+  }
+
+  // 在构建模式下，作为库进行构建
+  return {
+    ...config,
+    build: {
+      lib: {
+        entry: resolve(__dirname, 'src/index.ts'),
+        name: '<%= projectName %>',
+        formats: ['es', 'cjs', 'umd'],
+        fileName: (format) => {
+          if (format === 'es') return 'index.js';
+          if (format === 'cjs') return 'index.cjs';
+          return `index.${format}.js`;
+        }
+      },
+      rollupOptions: {
+        external: ['react', 'react-dom', 'react/jsx-runtime'],
+        output: {
+          globals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'react/jsx-runtime': 'jsxRuntime'
+          }
+        }
+      },
+      sourcemap: true,
+      minify: 'terser'
+    }
+  };
+}); 

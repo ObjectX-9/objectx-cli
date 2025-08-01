@@ -1,0 +1,54 @@
+# <%= projectName %>
+
+这是一个使用TypeScript编写的实用工具库。
+
+## 特性
+
+- 📦 基于TypeScript，提供完整的类型定义
+- 🛠️ 提供常用的工具函数
+- 📚 详细的API文档
+- ⚡️ 基于Vite构建，轻量且高效
+- 📦 支持Tree Shaking
+
+## 安装
+
+```bash
+<% if (packageManager === 'pnpm') { %>pnpm add<% } else if (packageManager === 'yarn') { %>yarn add<% } else { %>npm install<% } %> <%= projectName %>
+```
+
+## 快速开始
+
+```js
+import { capitalize } from '<%= projectName %>';
+
+const text = capitalize('hello world'); // 'Hello world'
+```
+
+## API文档
+
+### 字符串工具
+
+- `capitalize(str: string): string` - 将字符串的首字母大写
+- `camelToKebab(str: string): string` - 将驼峰命名转换为连字符命名
+- `kebabToCamel(str: string): string` - 将连字符命名转换为驼峰命名
+- `truncate(str: string, length: number, suffix?: string): string` - 截断字符串到指定长度，并添加后缀
+
+## 开发
+
+```bash
+# 安装依赖
+<%= packageManager %> install
+
+# 启动开发服务
+<%= packageManager %> dev
+
+# 生成API文档
+<%= packageManager %> docs
+
+# 构建
+<%= packageManager %> build
+```
+
+## 许可证
+
+MIT © [你的名字] 

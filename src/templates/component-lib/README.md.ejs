@@ -1,0 +1,58 @@
+# <%= projectName %>
+
+这是一个使用React和TypeScript构建的组件库。
+
+## 特性
+
+- 📦 基于TypeScript，提供完整的类型定义
+- 🎨 支持按需引入
+- 📚 详细的文档和示例<% if (needDocs) { %>（通过Storybook）<% } %>
+- ⚡️ 基于Vite构建，快速且高效
+<% if (hasLess) { %>- 🎯 支持Less样式<% } %>
+<% if (hasTailwind) { %>- 🌈 支持Tailwind CSS<% } %>
+<% if (hasCssModules) { %>- 🧩 支持CSS Modules<% } %>
+
+## 安装
+
+```bash
+<% if (packageManager === 'pnpm') { %>pnpm add<% } else if (packageManager === 'yarn') { %>yarn add<% } else { %>npm install<% } %> <%= projectName %>
+```
+
+## 快速开始
+
+```jsx
+import { Button } from '<%= projectName %>';
+
+function App() {
+  return (
+    <div>
+      <Button>点击我</Button>
+    </div>
+  );
+}
+```
+
+## 开发
+
+```bash
+# 安装依赖
+<%= packageManager %> install
+
+# 启动开发服务
+<%= packageManager %> dev
+<% if (needDocs) { %>
+# 启动Storybook
+<%= packageManager %> storybook
+<% } %>
+# 构建
+<%= packageManager %> build
+```
+
+## 组件列表
+
+- `Button` - 按钮组件
+- (更多组件将陆续添加)
+
+## 许可证
+
+MIT © [你的名字] 

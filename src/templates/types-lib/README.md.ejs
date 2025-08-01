@@ -1,0 +1,74 @@
+# <%= projectName %>
+
+TypeScript类型定义包，提供常用的类型定义。
+
+## 特性
+
+- 📦 纯TypeScript类型定义
+- 🧪 包含类型测试
+- 📚 详细的类型文档
+- 🔍 精心设计的类型层次结构
+
+## 安装
+
+```bash
+<% if (packageManager === 'pnpm') { %>pnpm add<% } else if (packageManager === 'yarn') { %>yarn add<% } else { %>npm install<% } %> -D <%= projectName %>
+```
+
+## 使用方法
+
+```typescript
+import { UserBase, UserDetail, ResponseData } from '<%= projectName %>';
+
+// 使用类型定义
+const user: UserBase = {
+  id: '1',
+  username: 'user1',
+  email: 'user@example.com'
+};
+
+// 使用响应类型
+const response: ResponseData<UserBase> = {
+  code: 200,
+  message: 'success',
+  data: user,
+  success: true
+};
+```
+
+## 类型定义
+
+### 通用类型
+
+- `ID` - 通用ID类型 (string | number)
+- `PaginationParams` - 分页参数
+- `PaginationResult<T>` - 分页结果
+- `SortDirection` - 排序方向 ('asc' | 'desc')
+- `SortParams` - 排序参数
+- `ResponseData<T>` - 通用响应结构
+
+### API 类型
+
+- `UserBase` - 用户基础信息
+- `UserDetail` - 用户详细信息
+- `UserQueryParams` - 用户查询参数
+- `UserQueryResult` - 用户查询结果
+- `UserResponse` - 用户API响应
+- `UserListResponse` - 用户列表API响应
+
+## 开发
+
+```bash
+# 安装依赖
+<%= packageManager %> install
+
+# 构建类型
+<%= packageManager %> build:types
+
+# 测试类型
+<%= packageManager %> test:types
+```
+
+## 许可证
+
+MIT © [你的名字] 
